@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background-color: rgb(243, 195, 63);
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 5px;
+}
+
+.navbar input {
+  border-radius: 2rem;
+  padding: 0 1rem;
+  line-height: 2rem;
+  font-size: 0.8rem;
+  border: 0;
+  min-width: 200px;
+  background-color: rgb(231, 214, 165);
+  transition: all ease 0.3s;
+}
+
+.navbar input:focus {
+  border: 3px solid rgb(224, 153, 59);
+  outline: 0;
+  min-width: 250px;
+  transition: all ease 0.3s;
+}
