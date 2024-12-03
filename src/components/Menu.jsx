@@ -10,3 +10,9 @@ function Menu() {
 }
 
 export default Menu;
+
+//postaviti share layout (navbar)
+//napraviti redux slice koji se zove globalStateSlice
+//u njemu ces imati Loading i user
+//onda napraviti pocetnu stranu
+//pogledati router link
