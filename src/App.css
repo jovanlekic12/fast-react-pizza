@@ -29,3 +29,40 @@ body {
   min-width: 250px;
   transition: all ease 0.3s;
 }
+
+.main__container div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 5rem;
+}
+
+.main__container div h1,
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.main__container div h2 {
+  color: rgb(243, 195, 63);
+}
+
+.homepage__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  width: 60%;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 2px;
+}
+
+.homepage__form input {
+  font-family: "Courier New", Courier, monospace;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid black;
+}
