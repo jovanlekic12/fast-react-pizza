@@ -57,6 +57,7 @@ h2 {
   width: 60%;
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 .homepage__form input {
@@ -65,4 +66,11 @@ h2 {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: 1px solid black;
+  transition: border 0.3s;
+}
+
+.homepage__form input:focus {
+  outline: 0;
+  border: 2px solid rgb(243, 195, 63);
+  transition: border 0.3s;
 }
