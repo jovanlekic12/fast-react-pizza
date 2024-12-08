@@ -19,7 +19,15 @@ export const getMenuItems = async () => {
 const menuSlice = createSlice({
   name: "menu",
   initialState,
-  reducers: {},
+  reducers: {
+    fetchItems: (state) => {
+      const response = fetch(url);
+      const data = response.json();
+      state.items = data.data;
+    },
+  },
 });
+
+export const { fetchItems } = menuSlice.actions;
 
 export default menuSlice.reducer;

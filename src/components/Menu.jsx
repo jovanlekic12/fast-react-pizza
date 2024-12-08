@@ -1,6 +1,13 @@
 import Navbar from "./Navbar";
+import { fetchItems } from "../feature/menu/menuSlice";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function Menu() {
+  const dispatch = useDispatch();
+
+  useEffect({}, []);
+
   return (
     <main className="main__container">
       <Navbar />
