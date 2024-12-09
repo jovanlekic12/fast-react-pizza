@@ -30,6 +30,10 @@ body {
   transition: all ease 0.3s;
 }
 
+.navbar h3 {
+  letter-spacing: 0;
+}
+
 .main__container div {
   display: flex;
   flex-direction: column;
@@ -73,4 +77,23 @@ h2 {
   outline: 0;
   border: 2px solid rgb(243, 195, 63);
   transition: border 0.3s;
+}
+
+.homepage__form button {
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.homepage__form button:hover {
+  background-color: rgb(255, 212, 94);
+  transition: background-color 0.3s;
 }
