@@ -20,7 +20,7 @@ function Home() {
   return (
     <main className="main__container">
       <Navbar></Navbar>
-      <div>
+      <div className="title__div">
         <h1>The best pizza .</h1>
         <h2>Straight out of the oven, straight to you .</h2>
       </div>

@@ -34,7 +34,7 @@ body {
   letter-spacing: 0;
 }
 
-.main__container div {
+.title__div {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -42,7 +42,7 @@ body {
   margin-top: 5rem;
 }
 
-.main__container div h1,
+.title__div h1,
 h2 {
   margin: 0;
   font-size: 2rem;
@@ -96,4 +96,99 @@ h2 {
 .homepage__form button:hover {
   background-color: rgb(255, 212, 94);
   transition: background-color 0.3s;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.pizza__photo {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.menu__list section {
+  display: flex;
+  height: fit-content;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu__list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  padding: 1rem 0;
+  border-bottom: 1px solid #cacaca;
+}
+
+.menu__item__infos {
+  margin: 0;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.menu__item__infos h3 {
+  margin: 0;
+}
+
+.menu__item__name {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.menu__item__ingredients {
+  color: #888;
+}
+
+.add__to__cart__btn,
+.menu__item__delete {
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  font-size: 0.8rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add__to__cart__btn:hover,
+.menu__item__delete:hover {
+  background-color: rgb(255, 212, 94);
+  transition: background-color 0.3s;
+}
+
+.menu__item__btn__div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu__item__btn__div div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.menu__item__btn__div div button {
+  background-color: rgb(243, 195, 63);
+  border: 0;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
 }

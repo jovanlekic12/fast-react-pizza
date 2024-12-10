@@ -23,8 +23,6 @@ function Menu() {
 
   const { menuItems } = useSelector((store) => store.menu);
 
-  console.log(menuItems);
-
   return (
     <main className="main__container">
       <Navbar />
