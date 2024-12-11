@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userName: "",
   isLoading: true,
+  menuItems: [],
 };
 
 const globalSlice = createSlice({
@@ -12,9 +13,15 @@ const globalSlice = createSlice({
     setName: (state, action) => {
       state.userName = action.payload;
     },
+    setMenuItems: (state, action) => {
+      state.menuItems = action.payload;
+      state.menuItems = state.menuItems.map((item) => {
+        return { ...item, amount: 1 };
+      });
+    },
   },
 });
 
-export const { setName } = globalSlice.actions;
+export const { setName, setMenuItems } = globalSlice.actions;
 
 export default globalSlice.reducer;

@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { setMenuItems } from "../feature/menu/menuSlice";
+import { setMenuItems } from "../feature/globalStateSlice";
 import MenuItem from "./MenuItem";
 function Menu() {
   const url = "https://react-fast-pizza-api.onrender.com/api/menu";
@@ -21,7 +21,8 @@ function Menu() {
     fetchItems();
   }, []);
 
-  const { menuItems } = useSelector((store) => store.menu);
+  const { menuItems } = useSelector((store) => store.global);
+  console.log(menuItems);
 
   return (
     <main className="main__container">

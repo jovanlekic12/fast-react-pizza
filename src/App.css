@@ -79,7 +79,7 @@ h2 {
   transition: border 0.3s;
 }
 
-.homepage__form button {
+.form__btn {
   background-color: rgb(243, 195, 63);
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
@@ -88,12 +88,13 @@ h2 {
   border-radius: 2rem;
   border: 0;
   padding: 1rem 2rem;
-  margin-top: 2rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: block;
+  margin: 2rem auto;
 }
 
-.homepage__form button:hover {
+.form__btn:hover {
   background-color: rgb(255, 212, 94);
   transition: background-color 0.3s;
 }
@@ -175,13 +176,14 @@ h2 {
 .menu__item__btn__div {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .menu__item__btn__div div {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 1rem;
 }
 
 .menu__item__btn__div div button {
@@ -191,4 +193,9 @@ h2 {
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
+}
+
+.menu__item__btn__div h1 {
+  font-size: 1.5rem;
+  font-family: "Courier New", Courier, monospace;
 }

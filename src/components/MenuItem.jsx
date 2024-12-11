@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function MenuItem(props) {
   const [isInCart, setIsInCart] = useState(false);
 
-  const { id, name, unitPrice, imageUrl, ingredients, soldOut } = props;
+  const { id, name, unitPrice, imageUrl, ingredients, soldOut, amount } = props;
 
   return (
     <li className="menu__list__item" id={id}>
@@ -24,7 +24,7 @@ function MenuItem(props) {
         <div className="menu__item__btn__div">
           <div>
             <button>-</button>
-            <h1></h1>
+            <h1>{amount}</h1>
             <button>+</button>
           </div>
           <button className="menu__item__delete">delete</button>

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 
 function Home() {
   const [inputValue, setInputValue] = useState("");
+  const { userName } = useSelector((store) => store.global);
 
   const dispatch = useDispatch();
   let navigate = useNavigate();
@@ -24,18 +25,28 @@ function Home() {
         <h1>The best pizza .</h1>
         <h2>Straight out of the oven, straight to you .</h2>
       </div>
-      <form
-        className="homepage__form"
-        onSubmit={(event) => handleSubmit(event)}
-      >
-        <p>👋🏼 Welcome! Please start telling us your name:</p>
-        <Input
-          placeholder="Your full name"
-          type="text"
-          onChange={(event) => setInputValue(event.target.value)}
-        />
-        {inputValue ? <button>Start ordering</button> : ""}
-      </form>
+      {userName ? (
+        <button className="form__btn" onClick={() => navigate("/menu")}>
+          CONTINUE ORDERING
+        </button>
+      ) : (
+        <form
+          className="homepage__form"
+          onSubmit={(event) => handleSubmit(event)}
+        >
+          <p>👋🏼 Welcome! Please start telling us your name:</p>
+          <Input
+            placeholder="Your full name"
+            type="text"
+            onChange={(event) => setInputValue(event.target.value)}
+          />
+          {inputValue ? (
+            <button className="form__btn">Start ordering</button>
+          ) : (
+            ""
+          )}
+        </form>
+      )}
     </main>
   );
 }
