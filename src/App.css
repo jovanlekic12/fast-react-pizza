@@ -12,6 +12,14 @@ body {
   letter-spacing: 5px;
 }
 
+.kurac {
+  color: #fff;
+}
+
+.kurac:visited {
+  color: red;
+}
+
 .navbar input {
   border-radius: 2rem;
   padding: 0 1rem;

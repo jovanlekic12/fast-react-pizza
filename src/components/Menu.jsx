@@ -6,6 +6,11 @@ import MenuItem from "./MenuItem";
 function Menu() {
   const url = "https://react-fast-pizza-api.onrender.com/api/menu";
   const dispatch = useDispatch();
+  const { menuItems } = useSelector((store) => store.global);
+  function handleAddItem(id) {
+    const item = menuItems.find((item) => item.id === id);
+    return item;
+  }
 
   const fetchItems = async () => {
     try {
@@ -21,7 +26,6 @@ function Menu() {
     fetchItems();
   }, []);
 
-  const { menuItems } = useSelector((store) => store.global);
   console.log(menuItems);
 
   return (
@@ -30,7 +34,9 @@ function Menu() {
       <ul className="menu__list">
         {menuItems &&
           menuItems.map((item) => {
-            return <MenuItem key={item.id} {...item} />;
+            return (
+              <MenuItem key={item.id} {...item} handleAddItem={handleAddItem} />
+            );
           })}
       </ul>
     </main>

@@ -1,12 +1,15 @@
 import Input from "./reusable/Input";
 import { useSelector } from "react-redux";
+import { Link } from "react-router";
 
 function Navbar() {
   const { userName } = useSelector((store) => store.global);
 
   return (
     <nav className="navbar">
-      <h1>FAST REACT PIZZA</h1>
+      <h1 className="kurac">
+        <Link to="index">Fast Pizza Co.</Link>
+      </h1>
       <Input placeholder="Search order #" type="text" />
       {userName ? <h3>{userName}</h3> : ""}
     </nav>

@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem } from "../feature/cart/cartSlice";
 
 function MenuItem(props) {
   const [isInCart, setIsInCart] = useState(false);
-
-  const { id, name, unitPrice, imageUrl, ingredients, soldOut, amount } = props;
+  const dispatch = useDispatch();
+  const {
+    id,
+    name,
+    unitPrice,
+    imageUrl,
+    ingredients,
+    soldOut,
+    amount,
+    handleAddItem,
+  } = props;
 
   return (
     <li className="menu__list__item" id={id}>
@@ -32,7 +42,10 @@ function MenuItem(props) {
       ) : (
         <button
           className="add__to__cart__btn"
-          onClick={() => setIsInCart(true)}
+          onClick={() => {
+            setIsInCart(true);
+            dispatch(addCartItem("z"));
+          }}
         >
           add to cart
         </button>
