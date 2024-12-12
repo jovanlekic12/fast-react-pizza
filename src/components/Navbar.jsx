@@ -7,9 +7,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h1 className="kurac">
-        <Link to="index">Fast Pizza Co.</Link>
-      </h1>
+      <h1>Fast React Pizza Co.</h1>
       <Input placeholder="Search order #" type="text" />
       {userName ? <h3>{userName}</h3> : ""}
     </nav>

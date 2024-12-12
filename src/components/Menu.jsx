@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { setMenuItems } from "../feature/globalStateSlice";
 import MenuItem from "./MenuItem";
+import Footer from "./Footer";
 function Menu() {
   const url = "https://react-fast-pizza-api.onrender.com/api/menu";
   const dispatch = useDispatch();
+
   const { menuItems } = useSelector((store) => store.global);
+  const { cartItems } = useSelector((store) => store.cart);
   function handleAddItem(id) {
     const item = menuItems.find((item) => item.id === id);
     return item;
@@ -26,8 +29,6 @@ function Menu() {
     fetchItems();
   }, []);
 
-  console.log(menuItems);
-
   return (
     <main className="main__container">
       <Navbar />
@@ -39,6 +40,7 @@ function Menu() {
             );
           })}
       </ul>
+      {cartItems.length > 0 && <Footer></Footer>}
     </main>
   );
 }

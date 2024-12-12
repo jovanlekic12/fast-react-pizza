@@ -207,3 +207,34 @@ h2 {
   font-size: 1.5rem;
   font-family: "Courier New", Courier, monospace;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(41 37 36);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+}
+
+.footer h1 {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin-left: 2rem;
+}
+
+.footer button {
+  margin-right: 2rem;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  cursor: pointer;
+}

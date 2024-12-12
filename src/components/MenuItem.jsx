@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartItem } from "../feature/cart/cartSlice";
+import {
+  addCartItem,
+  decrease,
+  increase,
+  removeItem,
+} from "../feature/cart/cartSlice";
 
 function MenuItem(props) {
   const [isInCart, setIsInCart] = useState(false);
@@ -16,6 +21,8 @@ function MenuItem(props) {
     handleAddItem,
   } = props;
 
+  const { cartItems } = useSelector((store) => store.cart);
+  console.log("cart", cartItems);
   return (
     <li className="menu__list__item" id={id}>
       <section>
@@ -33,18 +40,23 @@ function MenuItem(props) {
       {isInCart ? (
         <div className="menu__item__btn__div">
           <div>
-            <button>-</button>
+            <button onClick={() => dispatch(decrease({ id }))}>-</button>
             <h1>{amount}</h1>
-            <button>+</button>
+            <button onClick={() => dispatch(increase({ id }))}>+</button>
           </div>
-          <button className="menu__item__delete">delete</button>
+          <button
+            className="menu__item__delete"
+            onClick={() => dispatch(removeItem(id))}
+          >
+            delete
+          </button>
         </div>
       ) : (
         <button
           className="add__to__cart__btn"
           onClick={() => {
             setIsInCart(true);
-            dispatch(addCartItem("z"));
+            dispatch(addCartItem(handleAddItem(id)));
           }}
         >
           add to cart
