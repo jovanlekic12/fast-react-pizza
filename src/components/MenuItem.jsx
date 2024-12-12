@@ -8,7 +8,6 @@ import {
 } from "../feature/cart/cartSlice";
 
 function MenuItem(props) {
-  const [isInCart, setIsInCart] = useState(false);
   const dispatch = useDispatch();
   const {
     id,
@@ -19,10 +18,11 @@ function MenuItem(props) {
     soldOut,
     amount,
     handleAddItem,
+    isInCart,
   } = props;
 
-  const { cartItems } = useSelector((store) => store.cart);
-  console.log("cart", cartItems);
+  const { menuItems } = useSelector((store) => store.global);
+  console.log("cart", menuItems);
   return (
     <li className="menu__list__item" id={id}>
       <section>
@@ -55,7 +55,6 @@ function MenuItem(props) {
         <button
           className="add__to__cart__btn"
           onClick={() => {
-            setIsInCart(true);
             dispatch(addCartItem(handleAddItem(id)));
           }}
         >

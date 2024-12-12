@@ -16,7 +16,7 @@ const globalSlice = createSlice({
     setMenuItems: (state, action) => {
       state.menuItems = action.payload;
       state.menuItems = state.menuItems.map((item) => {
-        return { ...item, amount: 1 };
+        return { ...item, amount: 1, isInCart: false };
       });
     },
   },
