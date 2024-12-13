@@ -29,6 +29,8 @@ function Menu() {
     fetchItems();
   }, []);
 
+  console.log(cartItems);
+
   return (
     <main className="main__container">
       <Navbar />

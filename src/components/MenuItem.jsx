@@ -8,21 +8,20 @@ import {
 } from "../feature/cart/cartSlice";
 
 function MenuItem(props) {
-  const dispatch = useDispatch();
-  const {
-    id,
-    name,
-    unitPrice,
-    imageUrl,
-    ingredients,
-    soldOut,
-    amount,
-    handleAddItem,
-    isInCart,
-  } = props;
+  const [isInCart, setIsInCart] = useState(false);
+  const [amount, setAmount] = useState(1);
 
-  const { menuItems } = useSelector((store) => store.global);
-  console.log("cart", menuItems);
+  const dispatch = useDispatch();
+  const { id, name, unitPrice, imageUrl, ingredients, soldOut, handleAddItem } =
+    props;
+
+  function handleDecrease() {
+    if (amount === 1) {
+      setIsInCart(false);
+      return;
+    } else setAmount((prev) => prev - 1);
+  }
+
   return (
     <li className="menu__list__item" id={id}>
       <section>
@@ -40,9 +39,23 @@ function MenuItem(props) {
       {isInCart ? (
         <div className="menu__item__btn__div">
           <div>
-            <button onClick={() => dispatch(decrease({ id }))}>-</button>
+            <button
+              onClick={() => {
+                dispatch(decrease({ id }));
+                handleDecrease();
+              }}
+            >
+              -
+            </button>
             <h1>{amount}</h1>
-            <button onClick={() => dispatch(increase({ id }))}>+</button>
+            <button
+              onClick={() => {
+                dispatch(increase({ id }));
+                setAmount((prev) => prev + 1);
+              }}
+            >
+              +
+            </button>
           </div>
           <button
             className="menu__item__delete"
@@ -56,6 +69,7 @@ function MenuItem(props) {
           className="add__to__cart__btn"
           onClick={() => {
             dispatch(addCartItem(handleAddItem(id)));
+            setIsInCart(true);
           }}
         >
           add to cart
