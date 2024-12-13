@@ -1,12 +1,12 @@
-function CartItem() {
+function CartItem({ id, name, amount, unitPrice, setAmount, handleDelete }) {
   return (
     <li className="cart__list__item">
-      <div>
+      <div className="cart__info__div">
         <p>{amount}x</p>
         <p>{name}</p>
       </div>
-      <p>{price}</p>
-      <div>
+      <p className="cart__pizza__price">${unitPrice}</p>
+      <div className="menu__item__btn__div">
         <div>
           <button
             onClick={() => {

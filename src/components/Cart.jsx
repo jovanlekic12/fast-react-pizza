@@ -7,15 +7,17 @@ function Cart() {
   const { cartItems } = useSelector((store) => store.cart);
   const { userName } = useSelector((store) => store.global);
   return (
-    <main>
+    <main className="main__container">
       <Navbar />
-      <a href="/menu">Back to menu</a>
-      <h1>Your cart, {userName}</h1>
-      <ul className="cart__list">
-        {cartItems.map((item) => {
-          return <CartItem {...item} key={item.id} />;
-        })}
-      </ul>
+      <section className="cart__container">
+        <a href="/menu">Back to menu</a>
+        <h1>Your cart, {userName}</h1>
+        <ul className="cart__list">
+          {cartItems.map((item) => {
+            return <CartItem {...item} key={item.id} />;
+          })}
+        </ul>
+      </section>
       <Footer />
     </main>
   );
