@@ -22,6 +22,11 @@ function MenuItem(props) {
     } else setAmount((prev) => prev - 1);
   }
 
+  function handleDelete() {
+    setAmount(1);
+    setIsInCart(false);
+  }
+
   return (
     <li className="menu__list__item" id={id}>
       <section>
@@ -59,7 +64,10 @@ function MenuItem(props) {
           </div>
           <button
             className="menu__item__delete"
-            onClick={() => dispatch(removeItem(id))}
+            onClick={() => {
+              dispatch(removeItem(id));
+              handleDelete();
+            }}
           >
             delete
           </button>

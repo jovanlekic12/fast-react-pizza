@@ -5,6 +5,7 @@ import "./App.css";
 import { Route, Routes } from "react-router";
 import Home from "./components/Home";
 import Menu from "./components/Menu";
+import Cart from "./components/Cart";
 import { useEffect } from "react";
 import { calculateTotals } from "./feature/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route index element={<Home />} />
       <Route path="menu" element={<Menu />} />
+      <Route path="cart" element={<Cart />} />
     </Routes>
   );
 }
