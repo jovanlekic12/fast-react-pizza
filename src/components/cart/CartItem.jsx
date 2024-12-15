@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { increase } from "../../feature/cart/cartSlice";
 import { decrease } from "../../feature/cart/cartSlice";
 import { removeItem } from "../../feature/cart/cartSlice";
-function CartItem({ id, name, amount, unitPrice, setAmount, handleDelete }) {
+function CartItem({ id, name, amount, unitPrice, setAmount }) {
   const dispatch = useDispatch();
   return (
     <li className="cart__list__item">
@@ -35,7 +35,6 @@ function CartItem({ id, name, amount, unitPrice, setAmount, handleDelete }) {
           className="menu__item__delete"
           onClick={() => {
             dispatch(removeItem(id));
-            handleDelete();
           }}
         >
           delete

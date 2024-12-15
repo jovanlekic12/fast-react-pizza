@@ -33,18 +33,24 @@ function MenuItem(props) {
   return (
     <li className="menu__list__item" id={id}>
       <section>
-        <img src={imageUrl} alt="picture of pizza" className="pizza__photo" />
+        <img
+          src={imageUrl}
+          alt="picture of pizza"
+          className={soldOut ? "sold__out pizza__photo" : "pizza__photo"}
+        />
         <div className="menu__item__infos">
           <h3 className="menu__item__name">{name}</h3>
           <h3 className="menu__item__ingredients">{ingredients.join(", ")}</h3>
           {soldOut ? (
-            <h3>SOLD OUT</h3>
+            <h3 className="sold__out">SOLD OUT</h3>
           ) : (
             <h3 className="menu__item__price">${unitPrice}</h3>
           )}
         </div>
       </section>
-      {amount > 0 ? (
+      {soldOut ? (
+        ""
+      ) : amount > 0 ? (
         <div className="menu__item__btn__div">
           <div>
             <button

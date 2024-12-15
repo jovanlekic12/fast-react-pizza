@@ -307,3 +307,14 @@ h2 {
   color: #000000;
   transition: all 0.3s;
 }
+
+.sold__out {
+  color: #888;
+  filter: grayscale(1);
+  font-family: sans-serif;
+}
+
+.home__link {
+  color: #111;
+  text-decoration: none;
+}

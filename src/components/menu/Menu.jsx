@@ -27,7 +27,6 @@ function Menu() {
 
   useEffect(() => {
     if (menuItems.length === 0) {
-      console.log(menuItems);
       fetchItems();
     }
   }, []);
