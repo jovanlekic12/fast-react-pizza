@@ -325,6 +325,66 @@ h2 {
   gap: 1rem;
 }
 
+.input__div,
+.input__div div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .input__div label {
-  font-family: sans-serif;
+  font-family: "Courier New", Courier, monospace;
+  min-width: fit-content;
+  font-size: 1.2em;
+}
+
+.input__div input,
+.input__div div input {
+  font-family: "Courier New", Courier, monospace;
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.8rem 1rem;
+  border-radius: 2rem;
+  border: 0;
+  outline: none;
+  transition: outline 0.3s;
+  position: relative;
+}
+
+.input__div input:focus {
+  outline: 2px solid;
+  outline-color: rgb(243, 195, 63);
+  transition: outline 0.3s;
+}
+
+.input__div div {
+  position: relative;
+  width: 100%;
+}
+
+.input__div div button {
+  position: absolute;
+  right: 1%;
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.order__form__btn {
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  align-self: flex-start;
 }

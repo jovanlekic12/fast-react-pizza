@@ -18,8 +18,14 @@ function OrderForm() {
       </div>
       <div className="input__div">
         <label htmlFor="address">Address</label>
-        <Input type="text" placeholder="Your address"></Input>
-        <button>GET POSITION</button>
+        <div>
+          <Input
+            className="mjau"
+            type="text"
+            placeholder="Your address"
+          ></Input>
+          <button>GET POSITION</button>
+        </div>
       </div>
       <div className="checkbox__div">
         <Input type="checkbox"></Input>
