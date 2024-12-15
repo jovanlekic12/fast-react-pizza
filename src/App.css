@@ -255,5 +255,53 @@ h2 {
 .cart__container {
   display: flex;
   flex-direction: column;
+  list-style: none;
+  padding: 0;
   max-width: 800px;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.cart__div__btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order__btn {
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order__btn:hover {
+  background-color: rgb(255, 212, 94);
+  transition: background-color 0.3s;
+}
+
+.clear__cart__btn {
+  background-color: transparent;
+  border: 2px solid #c6c6c6;
+  color: #c6c6c6;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.clear__cart__btn:hover {
+  background-color: #c6c6c6;
+  color: #000000;
+  transition: all 0.3s;
 }

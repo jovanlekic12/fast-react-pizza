@@ -26,10 +26,11 @@ function Menu() {
   };
 
   useEffect(() => {
-    fetchItems();
+    if (menuItems.length === 0) {
+      console.log(menuItems);
+      fetchItems();
+    }
   }, []);
-
-  console.log(cartItems);
 
   return (
     <main className="main__container">

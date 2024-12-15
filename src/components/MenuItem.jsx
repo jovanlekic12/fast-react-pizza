@@ -33,7 +33,7 @@ function MenuItem(props) {
         <img src={imageUrl} alt="picture of pizza" className="pizza__photo" />
         <div className="menu__item__infos">
           <h3 className="menu__item__name">{name}</h3>
-          <h3 className="menu__item__ingredients">{ingredients}</h3>
+          <h3 className="menu__item__ingredients">{ingredients.join(", ")}</h3>
           {soldOut ? (
             <h3>SOLD OUT</h3>
           ) : (

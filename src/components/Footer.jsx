@@ -3,7 +3,6 @@ import { selectTotalAmount, selectTotalPrice } from "../feature/cart/cartSlice";
 import { useNavigate } from "react-router";
 function Footer() {
   const navigate = useNavigate();
-  const { amount, price } = useSelector((store) => store.cart);
   const totalAmount = useSelector(selectTotalAmount);
   const totalPrice = useSelector(selectTotalPrice);
   return (
