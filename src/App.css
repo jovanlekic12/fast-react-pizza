@@ -318,3 +318,13 @@ h2 {
   color: #111;
   text-decoration: none;
 }
+
+.order__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input__div label {
+  font-family: sans-serif;
+}

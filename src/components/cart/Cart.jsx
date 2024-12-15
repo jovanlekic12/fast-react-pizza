@@ -3,12 +3,13 @@ import CartItem from "../cart/CartItem";
 import { clearCart } from "../../feature/cart/cartSlice";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function Cart() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.cart);
   const { userName } = useSelector((store) => store.global);
+  const navigate = useNavigate();
   return (
     <main className="main__container">
       <Navbar />
@@ -23,7 +24,12 @@ function Cart() {
               })}
             </ul>
             <div className="cart__div__btn">
-              <button className="order__btn">ORDER PIZZAS</button>
+              <button
+                className="order__btn"
+                onClick={() => navigate("/order/new")}
+              >
+                ORDER PIZZAS
+              </button>
               <button
                 className="clear__cart__btn"
                 onClick={() => dispatch(clearCart())}
