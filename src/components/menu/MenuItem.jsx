@@ -5,9 +5,9 @@ import {
   decrease,
   increase,
   removeItem,
-} from "../feature/cart/cartSlice";
+} from "../../feature/cart/cartSlice";
 
-import { updateMenuItemAmount } from "../feature/globalStateSlice";
+import { updateMenuItemAmount } from "../../feature/globalStateSlice";
 
 function MenuItem(props) {
   const [amount, setAmount] = useState(0);

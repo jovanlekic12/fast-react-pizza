@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import CartItem from "./CartItem";
-import { clearCart } from "../feature/cart/cartSlice";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import CartItem from "../cart/CartItem";
+import { clearCart } from "../../feature/cart/cartSlice";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { Link } from "react-router";
 
 function Cart() {

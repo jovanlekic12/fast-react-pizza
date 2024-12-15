@@ -1,9 +1,9 @@
-import Navbar from "./Navbar";
+import Navbar from "../Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { setMenuItems } from "../feature/globalStateSlice";
-import MenuItem from "./MenuItem";
-import Footer from "./Footer";
+import { setMenuItems } from "../../feature/globalStateSlice";
+import MenuItem from "../menu/MenuItem";
+import Footer from "../Footer";
 function Menu() {
   const url = "https://react-fast-pizza-api.onrender.com/api/menu";
   const dispatch = useDispatch();

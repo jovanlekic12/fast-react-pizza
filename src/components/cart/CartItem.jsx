@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
-import { increase } from "../feature/cart/cartSlice";
-import { decrease } from "../feature/cart/cartSlice";
-import { removeItem } from "../feature/cart/cartSlice";
+import { increase } from "../../feature/cart/cartSlice";
+import { decrease } from "../../feature/cart/cartSlice";
+import { removeItem } from "../../feature/cart/cartSlice";
 function CartItem({ id, name, amount, unitPrice, setAmount, handleDelete }) {
   const dispatch = useDispatch();
   return (
