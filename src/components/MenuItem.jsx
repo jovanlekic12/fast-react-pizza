@@ -7,24 +7,27 @@ import {
   removeItem,
 } from "../feature/cart/cartSlice";
 
-function MenuItem(props) {
-  const [isInCart, setIsInCart] = useState(false);
-  const [amount, setAmount] = useState(1);
+import { updateMenuItemAmount } from "../feature/globalStateSlice";
 
+function MenuItem(props) {
+  const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
-  const { id, name, unitPrice, imageUrl, ingredients, soldOut, handleAddItem } =
-    props;
+
+  const {
+    id,
+    name,
+    unitPrice,
+    imageUrl,
+    ingredients,
+    soldOut,
+    handleAddItem,
+    itemAmount,
+  } = props;
 
   function handleDecrease() {
     if (amount === 1) {
-      setIsInCart(false);
       return;
     } else setAmount((prev) => prev - 1);
-  }
-
-  function handleDelete() {
-    setAmount(1);
-    setIsInCart(false);
   }
 
   return (
@@ -41,22 +44,24 @@ function MenuItem(props) {
           )}
         </div>
       </section>
-      {isInCart ? (
+      {amount > 0 ? (
         <div className="menu__item__btn__div">
           <div>
             <button
               onClick={() => {
                 dispatch(decrease({ id }));
+                dispatch(updateMenuItemAmount({ amount, id }));
                 handleDecrease();
               }}
             >
               -
             </button>
-            <h1>{amount}</h1>
+            <h1>{itemAmount}</h1>
             <button
               onClick={() => {
                 dispatch(increase({ id }));
                 setAmount((prev) => prev + 1);
+                dispatch(updateMenuItemAmount({ amount, id }));
               }}
             >
               +
@@ -66,7 +71,8 @@ function MenuItem(props) {
             className="menu__item__delete"
             onClick={() => {
               dispatch(removeItem(id));
-              handleDelete();
+              setAmount(0);
+              dispatch(updateMenuItemAmount({ amount, id }));
             }}
           >
             delete
@@ -77,7 +83,7 @@ function MenuItem(props) {
           className="add__to__cart__btn"
           onClick={() => {
             dispatch(addCartItem(handleAddItem(id)));
-            setIsInCart(true);
+            setAmount(1);
           }}
         >
           add to cart
