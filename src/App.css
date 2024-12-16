@@ -12,10 +12,6 @@ body {
   letter-spacing: 5px;
 }
 
-.kurac:visited {
-  color: red;
-}
-
 .navbar input {
   border-radius: 2rem;
   padding: 0 1rem;
@@ -387,4 +383,17 @@ h2 {
   padding: 0.5rem 1rem;
   cursor: pointer;
   align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.checkbox__div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.checkbox__div input {
+  width: 1.5rem;
+  height: 1.5rem;
 }

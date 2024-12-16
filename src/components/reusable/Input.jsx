@@ -1,4 +1,4 @@
-function Input({ type, placeholder, onChange, className }) {
+function Input({ type, placeholder, onChange, className, name }) {
   return (
     <input
       type={type}
@@ -6,6 +6,7 @@ function Input({ type, placeholder, onChange, className }) {
       required
       onChange={onChange}
       className={className}
+      name={name}
     />
   );
 }

@@ -10,6 +10,7 @@ function Cart() {
   const { cartItems } = useSelector((store) => store.cart);
   const { userName } = useSelector((store) => store.global);
   const navigate = useNavigate();
+
   return (
     <main className="main__container">
       <Navbar />

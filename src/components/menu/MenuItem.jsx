@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCartItem,
@@ -12,6 +13,11 @@ import { updateMenuItemAmount } from "../../feature/globalStateSlice";
 function MenuItem(props) {
   const [amount, setAmount] = useState(0);
   const dispatch = useDispatch();
+  const { cartItems } = useSelector((store) => store.cart);
+  useEffect(() => {
+    dispatch(updateMenuItemAmount({ amount, id }));
+    console.log(cartItems);
+  }, [amount]);
 
   const {
     id,
@@ -56,7 +62,6 @@ function MenuItem(props) {
             <button
               onClick={() => {
                 dispatch(decrease({ id }));
-                dispatch(updateMenuItemAmount({ amount, id }));
                 handleDecrease();
               }}
             >
@@ -67,7 +72,6 @@ function MenuItem(props) {
               onClick={() => {
                 dispatch(increase({ id }));
                 setAmount((prev) => prev + 1);
-                dispatch(updateMenuItemAmount({ amount, id }));
               }}
             >
               +
@@ -78,7 +82,6 @@ function MenuItem(props) {
             onClick={() => {
               dispatch(removeItem(id));
               setAmount(0);
-              dispatch(updateMenuItemAmount({ amount, id }));
             }}
           >
             delete

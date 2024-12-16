@@ -1,34 +1,131 @@
 import Navbar from "../Navbar";
+import { useEffect, useState } from "react";
 import Input from "../reusable/Input";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTotalPrice } from "../../feature/cart/cartSlice";
 
+import { getOrder } from "../../feature/order/orderSlice";
+
 function OrderForm() {
+  const { username } = useSelector((store) => store.global);
+  const { cartItems } = useSelector((store) => store.cart);
+  const [newCart, setCart] = useState([]);
+
+  const dispatch = useDispatch();
+
+  function handleSetCart() {
+    const newCart = cartItems.map((item) => {
+      return {
+        pizzaId: item.id,
+        name: item.name,
+        quantity: item.amount,
+        unitPrice: item.unitPrice,
+        totalPrice: item.unitPrice * item.amount,
+      };
+    });
+    setCart(newCart);
+  }
+  const [body, setBody] = useState({
+    address: "",
+    cart: [],
+    customer: username,
+    phone: "",
+    position: "",
+    priority: false,
+  });
+  useEffect(() => {
+    handleSetCart();
+  }, []);
+
   const totalPrice = useSelector(selectTotalPrice);
+  const url = "https://react-fast-pizza-api.onrender.com/api/order";
+  const fetchOrder = async () => {
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      dispatch(getOrder(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  function handleUpdateField(name, field) {
+    const newBody = { ...body, [name]: field };
+    setBody(newBody);
+    setBody((prev) => {
+      return { ...prev, cart: newCart };
+    });
+  }
+
+  function handleSubmitForm(event) {
+    event.preventDefault();
+    fetchOrder();
+  }
 
   return (
-    <form className="order__form">
+    <form className="order__form" onSubmit={(event) => handleSubmitForm(event)}>
       <div className="input__div">
         <label htmlFor="FirstName">First Name</label>
-        <Input type="text" placeholder="Your first name"></Input>
+        <Input
+          type="text"
+          name="customer"
+          placeholder="Your first name"
+          onChange={(event) =>
+            handleUpdateField(
+              event.target.getAttribute("name"),
+              event.target.value
+            )
+          }
+        ></Input>
       </div>
       <div className="input__div">
         <label htmlFor="PhoneNumber">Phone Number</label>
-        <Input type="text" placeholder="Your phone number"></Input>
+        <Input
+          type="text"
+          name="phone"
+          placeholder="Your phone number"
+          onChange={(event) =>
+            handleUpdateField(
+              event.target.getAttribute("name"),
+              event.target.value
+            )
+          }
+        ></Input>
       </div>
       <div className="input__div">
         <label htmlFor="address">Address</label>
         <div>
           <Input
-            className="mjau"
             type="text"
+            name="address"
             placeholder="Your address"
+            onChange={(event) =>
+              handleUpdateField(
+                event.target.getAttribute("name"),
+                event.target.value
+              )
+            }
           ></Input>
           <button>GET POSITION</button>
         </div>
       </div>
       <div className="checkbox__div">
-        <Input type="checkbox"></Input>
+        <input
+          type="checkbox"
+          name="priority"
+          onChange={(event) =>
+            handleUpdateField(
+              event.target.getAttribute("name"),
+              event.target.checked
+            )
+          }
+        ></input>
         <label htmlFor="checkbox">Want to give your order priority?</label>
       </div>
       <button className="order__form__btn">ORDER NOW FOR ${totalPrice}</button>
