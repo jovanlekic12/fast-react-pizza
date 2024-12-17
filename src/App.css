@@ -397,3 +397,46 @@ h2 {
   width: 1.5rem;
   height: 1.5rem;
 }
+
+.status__div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.status__div h1 {
+  letter-spacing: 1px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.status__div div h1 {
+  letter-spacing: 0;
+  font-size: 1.2rem;
+  background-color: rgb(67, 207, 67);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+
+.order__time__div {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.order__time__div h1 {
+  font-size: 1.2rem;
+}
+
+.order__time__div p {
+  font-weight: 600;
+  color: #888;
+}
+
+.order__price {
+  margin: 0.2rem 0;
+  font-family: "Courier New", Courier, monospace;
+  letter-spacing: 0;
+  padding: 0 2rem;
+}

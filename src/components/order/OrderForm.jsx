@@ -9,7 +9,7 @@ import { Await, useNavigate } from "react-router";
 function OrderForm() {
   const { username } = useSelector((store) => store.global);
   const { cartItems } = useSelector((store) => store.cart);
-  const { order } = useSelector((store) => store.order);
+  const [orderID, setOrderID] = useState("");
   const [newCart, setCart] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -51,8 +51,7 @@ function OrderForm() {
         },
       });
       const data = await response.json();
-      dispatch(getOrder(data.data.id));
-      console.log(data.data);
+      setOrderID(data.data.id);
     } catch (error) {
       console.log(error);
     }
@@ -66,10 +65,10 @@ function OrderForm() {
     });
   }
 
-  function handleSubmitForm(event) {
+  async function handleSubmitForm(event) {
     event.preventDefault();
-    fetchOrder();
-    navigate(`/order/${5}`);
+    await fetchOrder();
+    navigate(`/order/${orderID}`);
   }
 
   return (
