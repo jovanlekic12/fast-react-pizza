@@ -1,6 +1,7 @@
-function Input({ type, placeholder, onChange, className, name }) {
+function Input({ type, placeholder, onChange, className, name, value }) {
   return (
     <input
+      value={value}
       type={type}
       placeholder={placeholder}
       required

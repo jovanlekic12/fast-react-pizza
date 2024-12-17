@@ -16,7 +16,6 @@ function MenuItem(props) {
   const { cartItems } = useSelector((store) => store.cart);
   useEffect(() => {
     dispatch(updateMenuItemAmount({ amount, id }));
-    console.log(cartItems);
   }, [amount]);
 
   const {

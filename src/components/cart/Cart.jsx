@@ -25,10 +25,7 @@ function Cart() {
               })}
             </ul>
             <div className="cart__div__btn">
-              <button
-                className="order__btn"
-                onClick={() => navigate("/order/new")}
-              >
+              <button className="order__btn" onClick={() => navigate("/order")}>
                 ORDER PIZZAS
               </button>
               <button

@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import Input from "../reusable/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTotalPrice } from "../../feature/cart/cartSlice";
-
 import { getOrder } from "../../feature/order/orderSlice";
+import { Await, useNavigate } from "react-router";
 
 function OrderForm() {
   const { username } = useSelector((store) => store.global);
   const { cartItems } = useSelector((store) => store.cart);
+  const { order } = useSelector((store) => store.order);
   const [newCart, setCart] = useState([]);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   function handleSetCart() {
@@ -39,6 +40,7 @@ function OrderForm() {
 
   const totalPrice = useSelector(selectTotalPrice);
   const url = "https://react-fast-pizza-api.onrender.com/api/order";
+
   const fetchOrder = async () => {
     try {
       const response = await fetch(url, {
@@ -49,7 +51,8 @@ function OrderForm() {
         },
       });
       const data = await response.json();
-      dispatch(getOrder(data));
+      dispatch(getOrder(data.data.id));
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -66,6 +69,7 @@ function OrderForm() {
   function handleSubmitForm(event) {
     event.preventDefault();
     fetchOrder();
+    navigate(`/order/${5}`);
   }
 
   return (
@@ -76,6 +80,7 @@ function OrderForm() {
           type="text"
           name="customer"
           placeholder="Your first name"
+          value={username}
           onChange={(event) =>
             handleUpdateField(
               event.target.getAttribute("name"),
