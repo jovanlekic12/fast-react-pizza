@@ -1,16 +1,29 @@
+import { useState } from "react";
 import Input from "./reusable/Input";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 
 function Navbar() {
+  const [input, setInput] = useState();
   const { userName } = useSelector((store) => store.global);
+  const navigate = useNavigate();
+
+  function handleSubmit() {
+    navigate(`order/${input}`);
+  }
 
   return (
     <nav className="navbar">
       <Link to="/" className="home__link">
         <h1>Fast React Pizza Co.</h1>
       </Link>
-      <Input placeholder="Search order #" type="text" />
+      <form onSubmit={handleSubmit}>
+        <Input
+          placeholder="Search order #"
+          type="text"
+          onChange={(event) => setInput(event.target.value)}
+        />
+      </form>
       {userName ? <h3>{userName}</h3> : ""}
     </nav>
   );

@@ -411,10 +411,18 @@ h2 {
 
 .status__div div h1 {
   letter-spacing: 0;
-  font-size: 1.2rem;
-  background-color: rgb(67, 207, 67);
+  font-size: 1rem;
+  color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 2rem;
+}
+
+.preparing__order {
+  background-color: rgb(67, 207, 67);
+}
+
+.priority {
+  background-color: red;
 }
 
 .order__time__div {
@@ -439,4 +447,63 @@ h2 {
   font-family: "Courier New", Courier, monospace;
   letter-spacing: 0;
   padding: 0 2rem;
+}
+
+.final__order__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.final__order__list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.order__li__info div {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1rem;
+}
+
+.order__li__info div p {
+  margin: 0;
+}
+
+.order__li__ingredients {
+  font-style: italic;
+  margin: 8px 0;
+  font-size: 1rem;
+  font-weight: 900;
+  color: #888;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.status__div div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.priorty__btn {
+  background-color: rgb(243, 195, 63);
+  text-transform: uppercase;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 800;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 3rem;
+  transition: background-color 0.3s;
+}
+
+.priorty__btn:hover {
+  background-color: rgb(255, 212, 94);
+  transition: background-color 0.3s;
 }
