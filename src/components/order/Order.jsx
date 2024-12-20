@@ -50,8 +50,8 @@ function Order() {
     fetchData();
   }, []);
 
-  // const now = format(new Date(), "MMM d, hh:mm a");
-  // const formatedDate = format(new Date(estimatedDelivery), "MMM d, hh:mm a");
+  const now = format(new Date(), "MMM d, hh:mm a");
+  const formatedDate = format(new Date(estimatedDelivery), "MMM d, hh:mm a");
 
   console.log(order);
 
@@ -67,8 +67,8 @@ function Order() {
           </div>
         </div>
         <div className="order__time__div">
-          {/* <h1>Only {differenceInMinutes(formatedDate, now)} minutes left</h1> */}
-          {/* <p>(Estimated delivery: {formatedDate})</p> */}
+          <h1>Only {differenceInMinutes(formatedDate, now)} minutes left</h1>
+          <p>(Estimated delivery: {formatedDate})</p>
         </div>
         <ul className="final__order__list">
           {cart &&

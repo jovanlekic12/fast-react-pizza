@@ -7,7 +7,7 @@ import { getOrder } from "../../feature/order/orderSlice";
 import { Await, useNavigate } from "react-router";
 
 function OrderForm() {
-  const { username } = useSelector((store) => store.global);
+  const { userName } = useSelector((store) => store.global);
   const { cartItems } = useSelector((store) => store.cart);
   const [orderID, setOrderID] = useState("");
   const [newCart, setCart] = useState([]);
@@ -29,7 +29,7 @@ function OrderForm() {
   const [body, setBody] = useState({
     address: "",
     cart: [],
-    customer: username,
+    customer: userName,
     phone: "",
     position: "",
     priority: false,
@@ -79,7 +79,7 @@ function OrderForm() {
           type="text"
           name="customer"
           placeholder="Your first name"
-          value={username}
+          value={userName}
           onChange={(event) =>
             handleUpdateField(
               event.target.getAttribute("name"),
@@ -123,6 +123,7 @@ function OrderForm() {
         <input
           type="checkbox"
           name="priority"
+          value={userName}
           onChange={(event) =>
             handleUpdateField(
               event.target.getAttribute("name"),
