@@ -50,8 +50,17 @@ function Order() {
     fetchData();
   }, []);
 
-  const now = format(new Date(), "MMM d, hh:mm a");
-  const formatedDate = format(new Date(estimatedDelivery), "MMM d, hh:mm a");
+  const now = new Date();
+  let formatedDate = null;
+
+  if (estimatedDelivery) {
+    formatedDate = new Date(estimatedDelivery);
+  }
+
+  const timeLeft = formatedDate ? differenceInMinutes(formatedDate, now) : null;
+  const formattedDeliveryDate = formatedDate
+    ? format(formatedDate, "MMM d, hh:mm a")
+    : "Invalid date";
 
   console.log(order);
 
@@ -67,8 +76,14 @@ function Order() {
           </div>
         </div>
         <div className="order__time__div">
-          <h1>Only {differenceInMinutes(formatedDate, now)} minutes left</h1>
-          <p>(Estimated delivery: {formatedDate})</p>
+          {timeLeft !== null ? (
+            <>
+              <h1>Only {timeLeft} minutes left</h1>
+              <p>(Estimated delivery: {formattedDeliveryDate})</p>
+            </>
+          ) : (
+            <h1>Estimated delivery time is not available</h1>
+          )}
         </div>
         <ul className="final__order__list">
           {cart &&

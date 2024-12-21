@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Input from "../reusable/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTotalPrice } from "../../feature/cart/cartSlice";
-import { getOrder } from "../../feature/order/orderSlice";
+import { clearCart } from "../../feature/cart/cartSlice";
 import { Await, useNavigate } from "react-router";
 
 function OrderForm() {
@@ -69,6 +69,7 @@ function OrderForm() {
     event.preventDefault();
     await fetchOrder();
     navigate(`/order/${orderID}`);
+    dispatch(clearCart());
   }
 
   return (

@@ -431,6 +431,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
+  margin-top: 2rem;
 }
 
 .order__time__div h1 {
@@ -454,6 +455,7 @@ h2 {
   padding: 0;
   display: flex;
   flex-direction: column;
+  margin: 3rem 0;
 }
 
 .final__order__list li {
