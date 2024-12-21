@@ -7,12 +7,34 @@ import { clearCart } from "../../feature/cart/cartSlice";
 import { Await, useNavigate } from "react-router";
 
 function OrderForm() {
+  const [lat, setLat] = useState();
+  const [long, setLong] = useState();
+  const [location, setLocation] = useState();
   const { userName } = useSelector((store) => store.global);
   const { cartItems } = useSelector((store) => store.cart);
   const [orderID, setOrderID] = useState("");
   const [newCart, setCart] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  function getLocation() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLat(position.coords.latitude);
+      setLong(position.coords.longitude);
+    });
+  }
+
+  const fetchLocation = async () => {
+    try {
+      const response = await fetch(
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}`
+      );
+      const data = await response.json();
+      setLocation(`${data.city}, ${data.locality}, ${data.countryName}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function handleSetCart() {
     const newCart = cartItems.map((item) => {
@@ -38,10 +60,16 @@ function OrderForm() {
     handleSetCart();
   }, []);
 
+  useEffect(() => {
+    if (location) {
+      handleUpdateField("address", location);
+    }
+  }, [location]);
+
   const totalPrice = useSelector(selectTotalPrice);
   const url = "https://react-fast-pizza-api.onrender.com/api/order";
 
-  const fetchOrder = async () => {
+  async function fetchOrder() {
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -51,11 +79,14 @@ function OrderForm() {
         },
       });
       const data = await response.json();
+      console.log(data);
       setOrderID(data.data.id);
+      return data.data.id;
     } catch (error) {
-      console.log(error);
+      console.error("Error placing order:", error);
+      throw error;
     }
-  };
+  }
 
   function handleUpdateField(name, field) {
     const newBody = { ...body, [name]: field };
@@ -67,9 +98,13 @@ function OrderForm() {
 
   async function handleSubmitForm(event) {
     event.preventDefault();
-    await fetchOrder();
-    navigate(`/order/${orderID}`);
-    dispatch(clearCart());
+    try {
+      const orderId = await fetchOrder();
+      navigate(`/order/${orderId}`);
+      dispatch(clearCart());
+    } catch (error) {
+      console.error("Error during order submission:", error);
+    }
   }
 
   return (
@@ -109,6 +144,7 @@ function OrderForm() {
           <Input
             type="text"
             name="address"
+            value={location}
             placeholder="Your address"
             onChange={(event) =>
               handleUpdateField(
@@ -117,7 +153,15 @@ function OrderForm() {
               )
             }
           ></Input>
-          <button>GET POSITION</button>
+          <button
+            type="button"
+            onClick={() => {
+              getLocation();
+              fetchLocation();
+            }}
+          >
+            GET POSITION
+          </button>
         </div>
       </div>
       <div className="checkbox__div">

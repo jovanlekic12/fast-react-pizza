@@ -88,7 +88,7 @@ function Order() {
         <ul className="final__order__list">
           {cart &&
             cart.map((item) => {
-              return <OrderItem {...item} key={item.id} />;
+              return <OrderItem {...item} key={item.pizzaId} />;
             })}
         </ul>
         <h4 className="order__price">Price pizza: ${orderPrice}</h4>

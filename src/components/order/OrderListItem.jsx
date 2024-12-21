@@ -1,5 +1,5 @@
 function OrderItem(props) {
-  const { quantity, name, totalPrice } = props;
+  const { quantity, name, totalPrice, pizzaId } = props;
 
   return (
     <li className="order__li">
