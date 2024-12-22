@@ -79,8 +79,6 @@ function OrderForm() {
         },
       });
       const data = await response.json();
-      console.log(data);
-      setOrderID(data.data.id);
       return data.data.id;
     } catch (error) {
       console.error("Error placing order:", error);
@@ -90,9 +88,8 @@ function OrderForm() {
 
   function handleUpdateField(name, field) {
     const newBody = { ...body, [name]: field };
-    setBody(newBody);
     setBody((prev) => {
-      return { ...prev, cart: newCart };
+      return { ...prev, ...newBody, cart: newCart };
     });
   }
 

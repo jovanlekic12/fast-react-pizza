@@ -17,7 +17,7 @@ function Cart() {
       <section className="cart__container">
         <Link to="/menu">Back to menu</Link>
         <h1>Your cart{cartItems.length > 0 ? ", " + userName : " is empty"}</h1>
-        {cartItems.length > 0 ? (
+        {cartItems.length > 0 && (
           <section>
             <ul className="cart__list">
               {cartItems.map((item) => {
@@ -36,8 +36,6 @@ function Cart() {
               </button>
             </div>
           </section>
-        ) : (
-          ""
         )}
       </section>
       <Footer />

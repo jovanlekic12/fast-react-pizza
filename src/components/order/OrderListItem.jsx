@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 
 function OrderItem(props) {
   const { quantity, name, totalPrice, pizzaId } = props;
-  const [ingredients, setIngredients] = useState();
+  const [ingredients, setIngredients] = useState("");
   const { menuItems } = useSelector((store) => store.global);
 
   useEffect(() => {
     const pizza = menuItems.find((item) => item.id === pizzaId);
-    setIngredients(pizza.ingredients);
+    if (pizza) {
+      setIngredients(pizza.ingredients);
+    }
   }, []);
 
   return (

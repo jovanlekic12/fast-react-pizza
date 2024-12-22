@@ -1,11 +1,10 @@
 import Navbar from "../Navbar";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { setMenuItems } from "../../feature/globalStateSlice";
 import MenuItem from "../menu/MenuItem";
 import Footer from "../Footer";
+import useGetItems from "./useGetItems";
+
 function Menu() {
-  const url = "https://react-fast-pizza-api.onrender.com/api/menu";
   const dispatch = useDispatch();
 
   const { menuItems } = useSelector((store) => store.global);
@@ -15,21 +14,7 @@ function Menu() {
     return item;
   }
 
-  const fetchItems = async () => {
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      dispatch(setMenuItems(data.data));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (menuItems.length === 0) {
-      fetchItems();
-    }
-  }, []);
+  useGetItems();
 
   return (
     <main className="main__container">
