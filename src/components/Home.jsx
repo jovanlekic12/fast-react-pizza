@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setName } from "../feature/globalStateSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-
+import Button from "./reusable/Button";
 function Home() {
   const [inputValue, setInputValue] = useState("");
   const { userName } = useSelector((store) => store.global);
@@ -26,9 +26,9 @@ function Home() {
         <h2>Straight out of the oven, straight to you .</h2>
       </div>
       {userName ? (
-        <button className="form__btn" onClick={() => navigate("/menu")}>
+        <Button type="button" onClick={() => navigate("/menu")}>
           CONTINUE ORDERING
-        </button>
+        </Button>
       ) : (
         <form
           className="homepage__form"
@@ -40,11 +40,7 @@ function Home() {
             type="text"
             onChange={(event) => setInputValue(event.target.value)}
           />
-          {inputValue ? (
-            <button className="form__btn">Start ordering</button>
-          ) : (
-            ""
-          )}
+          {inputValue ? <Button type="button">Start ordering</Button> : ""}
         </form>
       )}
     </main>

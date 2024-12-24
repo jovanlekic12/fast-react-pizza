@@ -9,6 +9,7 @@ import {
 } from "../../feature/cart/cartSlice";
 
 import { updateMenuItemAmount } from "../../feature/globalStateSlice";
+import Button from "../reusable/Button";
 
 function MenuItem(props) {
   const [amount, setAmount] = useState(0);
@@ -58,36 +59,35 @@ function MenuItem(props) {
       ) : amount > 0 ? (
         <div className="menu__item__btn__div">
           <div>
-            <button
+            <Button
               onClick={() => {
                 dispatch(decrease({ id }));
                 handleDecrease();
               }}
             >
               -
-            </button>
+            </Button>
             <h1>{itemAmount}</h1>
-            <button
+            <Button
               onClick={() => {
                 dispatch(increase({ id }));
                 setAmount((prev) => prev + 1);
               }}
             >
               +
-            </button>
+            </Button>
           </div>
-          <button
-            className="menu__item__delete"
+          <Button
             onClick={() => {
               dispatch(removeItem(id));
               setAmount(0);
             }}
           >
             delete
-          </button>
+          </Button>
         </div>
       ) : (
-        <button
+        <Button
           className="add__to__cart__btn"
           onClick={() => {
             dispatch(addCartItem(handleAddItem(id)));
@@ -95,7 +95,7 @@ function MenuItem(props) {
           }}
         >
           add to cart
-        </button>
+        </Button>
       )}
     </li>
   );

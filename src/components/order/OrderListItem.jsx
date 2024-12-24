@@ -9,7 +9,9 @@ function OrderItem(props) {
   useEffect(() => {
     const pizza = menuItems.find((item) => item.id === pizzaId);
     if (pizza) {
-      setIngredients(pizza.ingredients);
+      setIngredients(
+        menuItems.find((item) => item.id === pizzaId).pizza.ingredients
+      );
     }
   }, []);
 

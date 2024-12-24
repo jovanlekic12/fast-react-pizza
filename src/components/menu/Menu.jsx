@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuItem from "../menu/MenuItem";
 import Footer from "../Footer";
 import useGetItems from "./useGetItems";
-
 function Menu() {
   const dispatch = useDispatch();
 

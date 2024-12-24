@@ -4,54 +4,12 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { format, differenceInMinutes } from "date-fns";
 import OrderItem from "./OrderListItem";
+import useGetOrder from "./useGetOrder";
 function Order() {
-  const [order, setOrder] = useState({});
-  const url = "https://react-fast-pizza-api.onrender.com/api/order/";
-  let params = useParams();
-
-  const {
-    cart,
-    id,
-    customer,
-    estimatedDelivery,
-    orderPrice,
-    priority,
-    priorityPrice,
-    status,
-  } = order;
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(url + params.id);
-      const data = await response.json();
-      setOrder(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchPriority = async () => {
-    try {
-      const response = await fetch(url + params.id, {
-        method: "PATCH",
-        body: JSON.stringify({ priority: true }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      setOrder(data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const now = new Date();
   let formatedDate = null;
+
+  useGetOrder();
 
   if (estimatedDelivery) {
     formatedDate = new Date(estimatedDelivery);
@@ -61,8 +19,6 @@ function Order() {
   const formattedDeliveryDate = formatedDate
     ? format(formatedDate, "MMM d, hh:mm a")
     : "Invalid date";
-
-  console.log(order);
 
   return (
     <main className="main__container">

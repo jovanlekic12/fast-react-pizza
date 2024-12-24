@@ -79,7 +79,7 @@ h2 {
   transition: border 0.3s;
 }
 
-.form__btn {
+.button {
   background-color: rgb(243, 195, 63);
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
