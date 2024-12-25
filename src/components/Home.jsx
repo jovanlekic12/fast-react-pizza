@@ -26,7 +26,7 @@ function Home() {
         <h2>Straight out of the oven, straight to you .</h2>
       </div>
       {userName ? (
-        <Button type="button" onClick={() => navigate("/menu")}>
+        <Button className="home__btn" onClick={() => navigate("/menu")}>
           CONTINUE ORDERING
         </Button>
       ) : (
@@ -40,7 +40,7 @@ function Home() {
             type="text"
             onChange={(event) => setInputValue(event.target.value)}
           />
-          {inputValue ? <Button type="button">Start ordering</Button> : ""}
+          {inputValue && <Button className="home__btn">Start ordering</Button>}
         </form>
       )}
     </main>

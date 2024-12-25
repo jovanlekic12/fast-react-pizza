@@ -1,8 +1,6 @@
-function Button({ children, type, className, onClick }) {
-  const baseClass = "button";
-  const modifiedClass = type === "danger" ? "button-danger" : "button-action";
+function Button({ children, className, onClick }) {
   return (
-    <button className={`${baseClass} ${modifiedClass}`} onClick={onClick}>
+    <button className={className} onClick={onClick}>
       {children}
     </button>
   );

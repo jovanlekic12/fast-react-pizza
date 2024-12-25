@@ -78,6 +78,7 @@ function MenuItem(props) {
             </Button>
           </div>
           <Button
+            className="add__to__cart__btn"
             onClick={() => {
               dispatch(removeItem(id));
               setAmount(0);

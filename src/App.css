@@ -79,7 +79,7 @@ h2 {
   transition: border 0.3s;
 }
 
-.button {
+.home__btn {
   background-color: rgb(243, 195, 63);
   text-transform: uppercase;
   font-family: "Courier New", Courier, monospace;
